@@ -18,7 +18,7 @@ import com.cso.nearby.ui.component.welcome.WelcomeContent
 import com.cso.nearby.ui.component.welcome.WelcomeHeader
 
 @Composable
-fun WelcomeScreen(modifier: Modifier = Modifier) {
+fun WelcomeScreen(modifier: Modifier = Modifier, onNavigateToHome: () -> Unit) {
     Column(
         modifier = modifier
             .background(Color.White)
@@ -32,7 +32,11 @@ fun WelcomeScreen(modifier: Modifier = Modifier) {
 
         WelcomeContent()
 
-        NearbyButton(modifier = Modifier.fillMaxWidth(), text = "Começar", onClick = {})
+        NearbyButton(
+            modifier = Modifier.fillMaxWidth(),
+            text = "Começar",
+            onClick = onNavigateToHome
+        )
     }
 }
 
@@ -40,5 +44,5 @@ fun WelcomeScreen(modifier: Modifier = Modifier) {
 @Preview
 @Composable
 private fun WelcomeScreenPreview() {
-    WelcomeScreen()
+    WelcomeScreen(onNavigateToHome = {})
 }
