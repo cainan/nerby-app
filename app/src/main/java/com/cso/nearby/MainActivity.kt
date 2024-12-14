@@ -4,18 +4,22 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
+import androidx.compose.runtime.getValue
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
 import com.cso.nearby.data.model.Market
-import com.cso.nearby.ui.screen.HomeScreen
-import com.cso.nearby.ui.screen.MarketDetailsScreen
-import com.cso.nearby.ui.screen.SplashScreen
-import com.cso.nearby.ui.screen.WelcomeScreen
-import com.cso.nearby.ui.screen.route.Home
-import com.cso.nearby.ui.screen.route.Splash
-import com.cso.nearby.ui.screen.route.Welcome
+import com.cso.nearby.ui.screen.home.HomeScreen
+import com.cso.nearby.ui.screen.home.HomeViewModel
+import com.cso.nearby.ui.screen.market_details.MarketDetailsScreen
+import com.cso.nearby.ui.screen.splash.SplashScreen
+import com.cso.nearby.ui.screen.welcome.WelcomeScreen
+import com.cso.nearby.ui.route.Home
+import com.cso.nearby.ui.route.Splash
+import com.cso.nearby.ui.route.Welcome
 import com.cso.nearby.ui.theme.NearbyTheme
 
 class MainActivity : ComponentActivity() {
@@ -25,6 +29,9 @@ class MainActivity : ComponentActivity() {
         setContent {
             NearbyTheme {
                 val navController = rememberNavController()
+                val homeViewModel by viewModels<HomeViewModel>()
+                val homeUiState by homeViewModel.uiState.collectAsStateWithLifecycle()
+
                 NavHost(
                     navController = navController,
                     startDestination = Splash
@@ -46,9 +53,11 @@ class MainActivity : ComponentActivity() {
                     }
 
                     composable<Home> {
-                        HomeScreen(onNavigateToMarketDetails = {
-                            navController.navigate(it)
-                        })
+                        HomeScreen(uiState = homeUiState,
+                            onEvent = homeViewModel::onEvent,
+                            onNavigateToMarketDetails = {
+                                navController.navigate(it)
+                            })
                     }
 
                     composable<Market> {

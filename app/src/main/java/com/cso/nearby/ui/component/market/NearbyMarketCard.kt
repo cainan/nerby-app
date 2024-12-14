@@ -27,6 +27,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil3.compose.AsyncImage
 import com.cso.nearby.R
 import com.cso.nearby.data.model.Market
 import com.cso.nearby.data.model.mock.mockMarkets
@@ -58,15 +59,15 @@ fun NearbyMarketCard(
                 .padding(8.dp),
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            Image(
+            AsyncImage(
                 modifier = Modifier
                     .clip(RoundedCornerShape(12.dp))
                     .fillMaxWidth(0.3f)
                     .height(IntrinsicSize.Min)
                     .aspectRatio(ratio = 1f, matchHeightConstraintsFirst = true),
                 contentScale = ContentScale.Crop,
-                painter = painterResource(id = R.drawable.img_burger), // TODO Replace with market cover
-                contentDescription = "Market Cover"
+                contentDescription = "Market Cover",
+                model = market.cover,
             )
             Column {
                 Text(text = market.name, style = Typography.headlineSmall.copy(fontSize = 14.sp))

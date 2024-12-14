@@ -1,10 +1,10 @@
 package com.cso.nearby.core.network
 
 import com.cso.nearby.core.network.KtorHttpClient.httpClientAndroid
+import com.cso.nearby.data.model.Category
 import com.cso.nearby.data.model.Coupon
 import com.cso.nearby.data.model.Market
 import com.cso.nearby.data.model.MarketDetails
-import com.cso.nearby.data.model.Category
 import io.ktor.client.call.body
 import io.ktor.client.request.get
 import io.ktor.client.request.patch
@@ -12,7 +12,12 @@ import io.ktor.client.request.patch
 object NearbyRemoteDataSource {
 
     private const val LOCAL_HOST_EMULATOR_BASE_URL = "http://10.0.2.2:3333"
-    private const val BASE_URL = LOCAL_HOST_EMULATOR_BASE_URL
+    private const val LOCAL_HOST_NAPRO_5G = "http://10.0.0.177:3333"
+    private const val LOCAL_HOST_ZUPRO = "http://192.168.100.4:3333"
+
+
+    private const val BASE_URL = LOCAL_HOST_ZUPRO
+
 
     suspend fun getCategories(): Result<List<Category>> = try {
         val categories = httpClientAndroid.get("$BASE_URL/categories").body<List<Category>>()

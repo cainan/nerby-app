@@ -1,4 +1,4 @@
-package com.cso.nearby.ui.screen
+package com.cso.nearby.ui.screen.market_details
 
 import com.cso.nearby.data.model.Rule
 

@@ -1,4 +1,4 @@
-package com.cso.nearby.ui.screen
+package com.cso.nearby.ui.screen.home
 
 import com.cso.nearby.data.model.Category
 import com.cso.nearby.data.model.Market
