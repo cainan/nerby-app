@@ -14,14 +14,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.cso.nearby.data.model.NearbyCategory
+import com.cso.nearby.data.model.Category
 import com.cso.nearby.data.model.mock.mockCategories
 
 @Composable
 fun NearbyCategoryFilterChipList(
     modifier: Modifier = Modifier,
-    categories: List<NearbyCategory>,
-    onSelectCategoryChanged: (NearbyCategory) -> Unit,
+    categories: List<Category>,
+    onSelectCategoryChanged: (Category) -> Unit,
 ) {
     var selectedCategoryId by remember { mutableStateOf(categories.firstOrNull()?.id.orEmpty()) }
 

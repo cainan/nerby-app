@@ -1,10 +1,10 @@
 package com.cso.nearby.data.model.mock
 
-import com.cso.nearby.data.model.NearbyCategory
+import com.cso.nearby.data.model.Category
 
 val mockCategories = listOf(
-    NearbyCategory(id = "1", name = "Alimentação"),
-    NearbyCategory(id = "2", name = "Supermercado"),
-    NearbyCategory(id = "3", name = "Farmácia"),
-    NearbyCategory(id = "4", name = "Teste"),
+    Category(id = "1", name = "Alimentação"),
+    Category(id = "2", name = "Supermercado"),
+    Category(id = "3", name = "Farmácia"),
+    Category(id = "4", name = "Teste"),
 )
