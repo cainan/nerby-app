@@ -12,11 +12,10 @@ import io.ktor.client.request.patch
 object NearbyRemoteDataSource {
 
     private const val LOCAL_HOST_EMULATOR_BASE_URL = "http://10.0.2.2:3333"
-    private const val LOCAL_HOST_NAPRO_5G = "http://10.0.0.177:3333"
-    private const val LOCAL_HOST_ZUPRO = "http://192.168.100.4:3333"
+    private const val LOCAL_HOST_PHYSICAL_BASE_URL = "http://10.0.0.177:3333"
 
 
-    private const val BASE_URL = LOCAL_HOST_ZUPRO
+    private const val BASE_URL = LOCAL_HOST_PHYSICAL_BASE_URL
 
 
     suspend fun getCategories(): Result<List<Category>> = try {
